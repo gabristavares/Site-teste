@@ -1,43 +1,50 @@
-function calculateIMC(event) { 
-    event.preventDefault()
-    const weightInput = document.getElementById('weight');
-    const heightInput = document.getElementById('height');
-    const resultBox = document.getElementById('result');
-    const valueText = document.getElementById('imc-value');
-    const descText = document.getElementById('imc-desc');
+function calculateIMC(event) {
+  event.preventDefault();
 
-    const weight = parseInt(weightInput.value);
-    const height = parseFloat(heightInput.value);
-    
-    const imc = weight / (height * height);
+  // 1. Capturar elementos
+  const weightInput = document.getElementById("weight");
+  const heightInput = document.getElementById("height");
+  const resultBox = document.getElementById("result");
+  const valueText = document.getElementById("imc-value");
+  const descText = document.getElementById("imc-desc");
 
-    console.log(imc);
+  // 2. Converter valores
+  const weight = parseFloat(weightInput.value);
+  const height = parseFloat(heightInput.value);
 
-    if(weight <= 0 || height <= 0){
-        alert("Por favor, preencha peso e altura com valores valido")
-        return
-    }
+  // 3. Validar
+  if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
+    alert("Por favor, preencha peso e altura com valores válidos.");
+    return;
+  }
 
-    let classification = ''
-    let color = ''
+  // 4. Calcular
+  const imc = weight / (height * height);
 
-    if(imc < 18.5){
-        classification = "Abaixo do peso"
-        color = "#e67e22"
-    } else if (imc < 24.9) {
-        classification = "Peso normal"
-        color = "#00b894"
-    } else if (imc < 29.9) {
-        classification = "Sobrepeso"
-        color = "#e67e22"
-    } else {
-        classification = "Obesidade"
-        color = "#d63031"
-    }   
-    valueText.innerText = imc
-    valueText.style.color = color
+  // 5. Definir classificação
+  let classification = "";
+  let color = "";
 
-    descText.innerText = classification
-    descText.style.color = color
+  if (imc < 18.5) {
+    classification = "Abaixo do peso";
+    color = "#e67e22"; // Laranja
+  } else if (imc < 24.9) {
+    classification = "Peso Normal";
+    color = "#00b894"; // Verde
+  } else if (imc < 29.9) {
+    classification = "Sobrepeso";
+    color = "#e67e22";
+  } else {
+    classification = "Obesidade";
+    color = "#d63031"; // Vermelho
+  }
 
+  // 6. Atualizar a tela
+  valueText.innerText = imc.toFixed(1);
+  valueText.style.color = color;
+  descText.innerText = classification;
+  descText.style.color = color;
+
+  // Mostrar caixa
+  resultBox.classList.add("show");
 }

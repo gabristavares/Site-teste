@@ -16,10 +16,11 @@
 </head>
 <title>FitLife | TMB</title>
 
-<body style="font-family: Poppins;">
+<body>
     <nav>
         <a class="logo" href="../index.html"><i class="fas fa-heartbeat"></i>Fitlife</a>
         <ul class="nav-links">
+            <li><a class="nav-link" href="../index.html">Home</a></li>
             <li><a class="nav-link" id="nav-active" href="tmb.html">TMB</a></li>
             <li><a class="nav-link" href="imc.html">IMC</a></li>
             <li><a class="nav-link" href="water.html">Água</a></li>
@@ -43,7 +44,7 @@
 
                 <div class="form-group">
                     <label for="weight">Peso (Kg)</label>
-                    <input type="number" id="weight" placeholder="Ex: 70" required>
+                    <input type="number" id="weight" placeholder="Ex70" required>
                 </div>
 
                 <div class="form-group">
@@ -56,12 +57,21 @@
                     <input type="number" id="age" placeholder="Ex: 25" required>
                 </div>
 
-                <button class="action-btn" type="submit">Calcular</button>
-            </form>
-            <a class="action-btn btn-back" href="../index.html">Voltar</a>
-        </section>
+          <button type="submit" class="action-btn" onclick="calculateTMB(event)">
+            Calcular Calorias
+          </button>
+          <a href="../index.html" class="action-btn btn-back">Voltar</a>
+        </form>
 
+        <div id="result" class="result-box">
+          <p>Gasto Calórico Basal:</p>
+          <h1 id="tmb-value" class="text-primary">0000</h1>
+          <p>Kcal/dia (Repouso)</p>
+        </div>
+      </section>
+    </main>
 
+    <script src="../js/tmb.js"></script>
     </main>
 </body>
 

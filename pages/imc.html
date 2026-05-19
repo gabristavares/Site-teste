@@ -20,6 +20,7 @@
         <a class="logo" href="../index.html"><i class="fas fa-heartbeat"></i>Fitlife</a>
 
         <ul class="nav-links">
+            <li><a class="nav-link" href="../index.html">Home</a></li>
             <li><a class="nav-link" href="tmb.html">TMB</a></li>
             <li><a class="nav-link" id="nav-active" href="imc.html">IMC</a></li>
             <li><a class="nav-link" href="water.html">Água</a></li>
@@ -39,20 +40,28 @@
 
                 <div class="form-group">
                     <label for="height">Altura (m)</label>
-                    <input type="number" id="weight" placeholder = "Ex: 1.75" required step="any">
+                    <input type="number" id="height" placeholder = "Ex: 1.75" required step="any">
                 </div>
 
-                <button class="action-btn" type="submit">Calcular</button>
-                <a class="action-btn btn-back" href="../index.html">Voltar</a>
-            </form>
+                 <button
+            type="submit"
+            class="action-btn"
+            onclick="calculateIMC(event)"
+          >
+            Calcular
+          </button>
+          <a href="../index.html" class="action-btn btn-back">Voltar</a>
+        </form>
 
-            <div class="result-box">
-                <p>Seu IMC é</p>
-                <h2>00.0</h2>
-                <p>Classificação</p>
-            </div>
-        </section>      
+        <div id="result" class="result-box">
+          <p>Seu IMC é:</p>
+          <h1 id="imc-value">00.0</h1>
+          <p id="imc-desc">Normal</p>
+        </div>
+      </section>
     </main>
+
+    <script src="../js/imc.js"></script>
 </body>
 
 </html>
